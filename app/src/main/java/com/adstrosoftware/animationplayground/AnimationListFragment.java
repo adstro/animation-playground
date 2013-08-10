@@ -18,7 +18,7 @@ package com.adstrosoftware.animationplayground;
 import android.support.v4.app.ListFragment;
 
 /**
- * Fragment to list the support animations
+ * Fragment to list the supported animations
  *
  * @author Adam Stroud &#60;<a href="mailto:adstro@adstrosoftware.com">adstro@adstrosoftware.com</a>&#62;
  */
