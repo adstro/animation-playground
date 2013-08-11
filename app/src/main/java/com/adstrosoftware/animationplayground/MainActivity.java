@@ -16,6 +16,8 @@
 package com.adstrosoftware.animationplayground;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 
@@ -26,19 +28,22 @@ import com.adstrosoftware.animationplayground.horizontal.HorizontalFragment;
  *
  * @author Adam Stroud &#60;<a href="mailto:adstro@adstrosoftware.com">adstro@adstrosoftware.com</a>&#62;
  */
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements AnimationListFragment.CallbackListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (findViewById(R.id.fragmentContainer) != null) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        if (fragmentManager.findFragmentById(R.id.animationListFragment) == null) {
+
             // Only add the fragment once to prevent overlapping fragments
             if (savedInstanceState == null) {
-                HorizontalFragment fragment = HorizontalFragment.newInstance();
+                Fragment fragment = AnimationListFragment.newInstance();
 
-                getSupportFragmentManager()
+                fragmentManager
                         .beginTransaction()
                         .add(R.id.fragmentContainer, fragment, fragment.getClass().getName())
                         .commit();
@@ -51,5 +56,17 @@ public class MainActivity extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    @Override
+    public void onAnimationSelected(int animation) {
+        if (animation == 0) {
+            Fragment fragment = HorizontalFragment.newInstance();
+
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentContainer, fragment, fragment.getClass().getName())
+                    .commit();
+        }
     }
 }

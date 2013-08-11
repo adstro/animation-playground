@@ -30,6 +30,8 @@ public class HorizontalFragment extends Fragment {
 
     private static final String TAG = "HorizontalFragment";
 
+    public HorizontalFragment() {}
+
     public static HorizontalFragment newInstance() {
         HorizontalFragment horizontalFragment;
 

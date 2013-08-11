@@ -15,7 +15,12 @@
  */
 package com.adstrosoftware.animationplayground;
 
+import android.app.Activity;
+import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 /**
  * Fragment to list the supported animations
@@ -24,9 +29,55 @@ import android.support.v4.app.ListFragment;
  */
 public class AnimationListFragment extends ListFragment {
 
+    private CallbackListener callbackListener;
+
     /**
      * No-arg constructor needed by Android
      */
     public AnimationListFragment() {
+        // no-op
+    }
+
+    public static AnimationListFragment newInstance() {
+        return new AnimationListFragment();
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        setListAdapter(new ArrayAdapter<String>(getActivity(),
+                                                android.R.layout.simple_list_item_1,
+                                                getResources().getStringArray(R.array.animation_array)));
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        if (activity instanceof CallbackListener) {
+            callbackListener = (CallbackListener) activity;
+        } else {
+            throw new InvalidFragmentActivityException(activity, CallbackListener.class);
+        }
+    }
+
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+
+        callbackListener.onAnimationSelected(position);
+    }
+
+    /**
+     * Handles the callbacks for fragment actions
+     */
+    public interface CallbackListener {
+        /**
+         * Animation selection handler
+         *
+         * @param animation The animation index that was selected
+         */
+        public void onAnimationSelected(int animation);
     }
 }
