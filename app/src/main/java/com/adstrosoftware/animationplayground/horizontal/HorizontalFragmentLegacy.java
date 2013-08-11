@@ -52,15 +52,15 @@ public class HorizontalFragmentLegacy extends HorizontalFragment implements View
     @Override
     public void onClick(View v) {
         float left = layout.getX();
-        float right = layout.getWidth() - layout.findViewById(R.id.textView1).getWidth();
+        float right = layout.getWidth() - layout.findViewById(R.id.animatedView1).getWidth();
 
         AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.playTogether(ObjectAnimator.ofFloat(layout.findViewById(R.id.textView1), "x", left),
-                ObjectAnimator.ofFloat(layout.findViewById(R.id.textView2), "x", right),
-                ObjectAnimator.ofFloat(layout.findViewById(R.id.textView3), "x", left),
-                ObjectAnimator.ofFloat(layout.findViewById(R.id.textView4), "x", right),
-                ObjectAnimator.ofFloat(layout.findViewById(R.id.textView5), "x", left),
-                ObjectAnimator.ofFloat(layout.findViewById(R.id.textView6), "x", right));
+        animatorSet.playTogether(ObjectAnimator.ofFloat(layout.findViewById(R.id.animatedView1), "x", left),
+                ObjectAnimator.ofFloat(layout.findViewById(R.id.animatedView2), "x", right),
+                ObjectAnimator.ofFloat(layout.findViewById(R.id.animatedView3), "x", left),
+                ObjectAnimator.ofFloat(layout.findViewById(R.id.animatedView4), "x", right),
+                ObjectAnimator.ofFloat(layout.findViewById(R.id.animatedView5), "x", left),
+                ObjectAnimator.ofFloat(layout.findViewById(R.id.animatedView6), "x", right));
         animatorSet.start();
     }
 }

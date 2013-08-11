@@ -5,47 +5,47 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <TextView
+    <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView1"
+            android:id="@+id/animatedView1"
             android:layout_gravity="center"
-            android:text="textView1"/>
+            android:src="@drawable/circle"/>
 
-    <TextView
+    <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView2"
+            android:id="@+id/animatedView2"
             android:layout_gravity="center"
-            android:text="textView2"/>
+            android:src="@drawable/circle"/>
 
-    <TextView
+    <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView3"
+            android:id="@+id/animatedView3"
             android:layout_gravity="center"
-            android:text="textView3"/>
+            android:src="@drawable/circle"/>
 
-    <TextView
+    <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView4"
+            android:id="@+id/animatedView4"
             android:layout_gravity="center"
-            android:text="textView4"/>
+            android:src="@drawable/circle"/>
 
-    <TextView
+    <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView5"
+            android:id="@+id/animatedView5"
             android:layout_gravity="center"
-            android:text="textView5"/>
+            android:src="@drawable/circle"/>
 
-    <TextView
+    <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView6"
+            android:id="@+id/animatedView6"
             android:layout_gravity="center"
-            android:text="textView6"/>
+            android:src="@drawable/circle"/>
 
     <Button
             android:layout_width="match_parent"

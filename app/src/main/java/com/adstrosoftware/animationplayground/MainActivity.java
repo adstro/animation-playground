@@ -18,10 +18,13 @@ package com.adstrosoftware.animationplayground;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 
+import com.adstrosoftware.animationplayground.explode.ExplodeFragment;
 import com.adstrosoftware.animationplayground.horizontal.HorizontalFragment;
+import com.adstrosoftware.animationplayground.vertical.VerticalFragment;
 
 /**
  * The main activity of the app
@@ -30,6 +33,8 @@ import com.adstrosoftware.animationplayground.horizontal.HorizontalFragment;
  */
 public class MainActivity extends ActionBarActivity implements AnimationListFragment.CallbackListener {
 
+    private boolean smallScreen;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +42,9 @@ public class MainActivity extends ActionBarActivity implements AnimationListFrag
 
         FragmentManager fragmentManager = getSupportFragmentManager();
 
-        if (fragmentManager.findFragmentById(R.id.animationListFragment) == null) {
+        smallScreen = (fragmentManager.findFragmentById(R.id.animationListFragment) == null);
+
+        if (smallScreen) {
 
             // Only add the fragment once to prevent overlapping fragments
             if (savedInstanceState == null) {
@@ -60,13 +67,31 @@ public class MainActivity extends ActionBarActivity implements AnimationListFrag
 
     @Override
     public void onAnimationSelected(int animation) {
-        if (animation == 0) {
-            Fragment fragment = HorizontalFragment.newInstance();
 
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragmentContainer, fragment, fragment.getClass().getName())
-                    .commit();
+        Fragment fragment;
+
+        switch (animation) {
+            case 0:
+                fragment = HorizontalFragment.newInstance();
+                break;
+            case 1:
+                fragment = VerticalFragment.newInstance();
+                break;
+            case 2:
+                fragment = ExplodeFragment.newInstance();
+                break;
+            default:
+                fragment = InvalidFragment.newInstance();
         }
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragmentContainer, fragment, fragment.getClass().getName());
+
+        if (smallScreen) {
+            fragmentTransaction.addToBackStack(null);
+        }
+
+        fragmentTransaction.commit();
     }
 }

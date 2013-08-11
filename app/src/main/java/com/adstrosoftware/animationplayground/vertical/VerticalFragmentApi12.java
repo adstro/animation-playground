@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.adstrosoftware.animationplayground.horizontal;
+package com.adstrosoftware.animationplayground.vertical;
 
 import android.annotation.TargetApi;
 import android.os.Bundle;
@@ -24,26 +24,20 @@ import android.view.ViewGroup;
 import com.adstrosoftware.animationplayground.R;
 
 /**
- * Fragment that implements horizontal animation using API 12 API.
+ * TODO
  *
  * @author Adam Stroud &#60;<a href="mailto:adstro@adstrosoftware.com">adstro@adstrosoftware.com</a>&#62;
  */
 @TargetApi(12)
-public class HorizontalFragmentApi12 extends HorizontalFragment implements View.OnClickListener {
+public class VerticalFragmentApi12 extends VerticalFragment implements View.OnClickListener {
 
-    private static final String TAG = "HorizontalFragmentAps12";
-
-    private View layout;
-
-    /**
-     * no-arg constructor needed by Android SDK
-     */
-    public HorizontalFragmentApi12() {
-    }
+    private View animationContainer;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        layout = inflater.inflate(R.layout.fragment_horizontal, container, false);
+        View layout = inflater.inflate(R.layout.fragment_vertical, container, false);
+
+        animationContainer = layout.findViewById(R.id.animationContainer);
         layout.findViewById(R.id.animate).setOnClickListener(this);
 
         return layout;
@@ -51,14 +45,14 @@ public class HorizontalFragmentApi12 extends HorizontalFragment implements View.
 
     @Override
     public void onClick(View v) {
-        float left = layout.getLeft();
-        float right = layout.getRight() - layout.findViewById(R.id.animatedView1).getWidth();
+        float top = animationContainer.getTop();
+        float bottom = animationContainer.getBottom() - animationContainer.findViewById(R.id.animatedView1).getHeight();
 
-        layout.findViewById(R.id.animatedView1).animate().x(left);
-        layout.findViewById(R.id.animatedView2).animate().x(right);
-        layout.findViewById(R.id.animatedView3).animate().x(left);
-        layout.findViewById(R.id.animatedView4).animate().x(right);
-        layout.findViewById(R.id.animatedView5).animate().x(left);
-        layout.findViewById(R.id.animatedView6).animate().x(right);
+        animationContainer.findViewById(R.id.animatedView1).animate().y(top);
+        animationContainer.findViewById(R.id.animatedView2).animate().y(bottom);
+        animationContainer.findViewById(R.id.animatedView3).animate().y(top);
+        animationContainer.findViewById(R.id.animatedView4).animate().y(bottom);
+        animationContainer.findViewById(R.id.animatedView5).animate().y(top);
+        animationContainer.findViewById(R.id.animatedView6).animate().y(bottom);
     }
 }

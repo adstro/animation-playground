@@ -4,9 +4,12 @@
     <string name="app_name">Animation Playground</string>
     <string name="action_settings">Settings</string>
     <string name="animate">Animate</string>
+    <string name="illegalAnimation">Illegal Animation Selected</string>
 
     <string-array name="animation_array">
         <item>Horizontal</item>>
+        <item>Vertical</item>>
+        <item>Explode</item>>
     </string-array>
 
 </resources>
