@@ -33,6 +33,7 @@ public class ExplodeFragmentApi12 extends ExplodeFragment implements View.OnClic
 
     private View animationContainer;
     private View layout;
+    private boolean animated;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,14 +47,26 @@ public class ExplodeFragmentApi12 extends ExplodeFragment implements View.OnClic
 
     @Override
     public void onClick(View v) {
-        animateToLeft(R.id.animatedView1);
-        animateToTopLeft(R.id.animatedView2);
-        animateToTop(R.id.animatedView3);
-        animateToTopRight(R.id.animatedView4);
-        animateToRight(R.id.animatedView5);
-        animateToBottomRight(R.id.animatedView6);
-        animateToBottom(R.id.animatedView7);
-        animateToBottomLeft(R.id.animatedView8);
+
+        if (animated) {
+            layout.findViewById(R.id.animatedView1).clearAnimation();
+            layout.findViewById(R.id.animatedView2).clearAnimation();
+            layout.findViewById(R.id.animatedView3).clearAnimation();
+            layout.findViewById(R.id.animatedView4).clearAnimation();
+            layout.findViewById(R.id.animatedView5).clearAnimation();
+            layout.findViewById(R.id.animatedView6).clearAnimation();
+            layout.findViewById(R.id.animatedView7).clearAnimation();
+            layout.findViewById(R.id.animatedView8).clearAnimation();
+        } else {
+            animateToLeft(R.id.animatedView1);
+            animateToTopLeft(R.id.animatedView2);
+            animateToTop(R.id.animatedView3);
+            animateToTopRight(R.id.animatedView4);
+            animateToRight(R.id.animatedView5);
+            animateToBottomRight(R.id.animatedView6);
+            animateToBottom(R.id.animatedView7);
+            animateToBottomLeft(R.id.animatedView8);
+        }
     }
 
     private void animateToLeft(int viewId) {

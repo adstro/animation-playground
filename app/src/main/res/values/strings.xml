@@ -7,9 +7,10 @@
     <string name="illegalAnimation">Illegal Animation Selected</string>
 
     <string-array name="animation_array">
-        <item>Horizontal</item>>
-        <item>Vertical</item>>
-        <item>Explode</item>>
+        <item>Horizontal</item>
+        <item>Vertical</item>
+        <item>Explode</item>
+        <item>Rotate</item>
     </string-array>
 
 </resources>
