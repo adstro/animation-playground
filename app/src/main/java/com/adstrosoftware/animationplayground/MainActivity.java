@@ -24,6 +24,7 @@ import android.view.Menu;
 
 import com.adstrosoftware.animationplayground.explode.ExplodeFragment;
 import com.adstrosoftware.animationplayground.horizontal.HorizontalFragment;
+import com.adstrosoftware.animationplayground.rotate.RotateFragment;
 import com.adstrosoftware.animationplayground.vertical.VerticalFragment;
 
 /**
@@ -79,6 +80,9 @@ public class MainActivity extends ActionBarActivity implements AnimationListFrag
                 break;
             case 2:
                 fragment = ExplodeFragment.newInstance();
+                break;
+            case 3:
+                fragment = RotateFragment.newInstance();
                 break;
             default:
                 fragment = InvalidFragment.newInstance();
